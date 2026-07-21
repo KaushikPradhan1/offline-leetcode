@@ -1,10 +1,21 @@
 {
   "name": "offline-leetcode",
   "displayName": "Offline LeetCode",
-  "description": "Solve 3,000+ LeetCode problems completely offline inside VS Code with local compiler execution and progress tracking.",
+  "description": "Solve LeetCode problems completely offline inside VS Code.",
   "version": "1.0.0",
   "publisher": "Kaushik",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaushikpradhan1/offline-leetcode"
+  },
   "icon": "media/icon.png",
+  "keywords": [
+    "leetcode",
+    "offline",
+    "dsa",
+    "competitive-programming"
+  ],
+  "main": "./extension.js",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -12,16 +23,39 @@
     "Other",
     "Education"
   ],
-  "keywords": [
-    "leetcode",
-    "dsa",
-    "python",
-    "javascript",
-    "offline"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kaushikpradhan1/offline-leetcode"
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "offlineLeetcodeContainer",
+          "title": "Offline LeetCode",
+          "icon": "$(code)"
+        }
+      ]
+    },
+    "views": {
+      "offlineLeetcodeContainer": [
+        {
+          "id": "offlineLeetcodeView",
+          "name": "Questions"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "offlineLeetcode.openProblem",
+        "title": "Open Problem"
+      }
+    ]
   },
-  "main": "./extension.js"
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "eslint": "^9.0.0"
+  }
 }
